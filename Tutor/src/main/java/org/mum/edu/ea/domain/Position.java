@@ -56,7 +56,6 @@ public class Position implements Serializable {
     @Column(name = "ID")
     private Long id;
     @Size(max = 255)
-    @Column(name = "CATEGORY")
     @ManyToOne
     private PositionCategory category;
     @Column(name = "DURATION")
