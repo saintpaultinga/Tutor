@@ -8,23 +8,7 @@ package org.mum.edu.ea.domain;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -55,8 +39,8 @@ public class Position implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID")
     private Long id;
-    @Size(max = 255)
-    @ManyToOne
+//    @Size(max = 255)
+    @ManyToOne(cascade =CascadeType.ALL)
     private PositionCategory category;
     @Column(name = "DURATION")
     private Integer duration;
@@ -67,8 +51,8 @@ public class Position implements Serializable {
     @Column(name = "POSTEDDATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date posteddate;
-    @Size(max = 255)
-    @Column(name = "STATUS")
+//    @Size(max = 255)
+        @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
     private PositionStatus status;
     @Size(max = 255)
@@ -166,8 +150,7 @@ public class Position implements Serializable {
     public Collection<WebUser> getWebuserCollection() {
         return webuserCollection;
     }
-
-    public void setWebuserCollection(Collection<WebUser> webuserCollection) {
+    public void setWebusterCollection(Collection<WebUser> webuserCollection) {
         this.webuserCollection = webuserCollection;
     }
 
