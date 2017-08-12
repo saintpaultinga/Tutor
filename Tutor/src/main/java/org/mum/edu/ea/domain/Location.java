@@ -27,13 +27,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "location")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Location.findAll", query = "SELECT l FROM Location l")
-    , @NamedQuery(name = "Location.findById", query = "SELECT l FROM Location l WHERE l.id = :id")
-    , @NamedQuery(name = "Location.findByCity", query = "SELECT l FROM Location l WHERE l.city = :city")
-    , @NamedQuery(name = "Location.findByState", query = "SELECT l FROM Location l WHERE l.state = :state")
-    , @NamedQuery(name = "Location.findByStreet", query = "SELECT l FROM Location l WHERE l.street = :street")})
 public class Location implements Serializable {
 
     private static final long serialVersionUID = 1L;
