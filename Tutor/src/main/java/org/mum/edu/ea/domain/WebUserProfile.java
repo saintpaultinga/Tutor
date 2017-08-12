@@ -29,10 +29,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "webuser_userprofile")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "WebuserUserprofile.findAll", query = "SELECT w FROM WebuserUserprofile w")
-    , @NamedQuery(name = "WebuserUserprofile.findByWebUserID", query = "SELECT w FROM WebuserUserprofile w WHERE w.webuser = :webUserID")
-    , @NamedQuery(name = "WebuserUserprofile.findByUserProfileID", query = "SELECT w FROM WebuserUserprofile w WHERE w.userProfileID = :userProfileID")})
-public class WebuserUserprofile implements Serializable {
+    @NamedQuery(name = "WebUserProfile.findAll", query = "SELECT w FROM WebUserProfile w")
+    , @NamedQuery(name = "WebUserProfile.findByWebUserID", query = "SELECT w FROM WebUserProfile w WHERE w.webuser = :webUserID")
+    , @NamedQuery(name = "WebUserProfile.findByUserProfileID", query = "SELECT w FROM WebUserProfile w WHERE w.userProfileID = :userProfileID")})
+public class WebUserProfile implements Serializable {
 
 	/**
 	 * 
@@ -47,16 +47,16 @@ public class WebuserUserprofile implements Serializable {
 	private WebUserProfileType type ;
     @JoinColumn(name = "WebUser_ID", referencedColumnName = "ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Webuser webuser;
+    private WebUser webuser;
 
-    public WebuserUserprofile() {
+    public WebUserProfile() {
     }
 
-    public Webuser getWebuser() {
+    public WebUser getWebuser() {
         return webuser;
     }
 
-    public void setWebuser(Webuser webuser) {
+    public void setWebuser(WebUser webuser) {
         this.webuser = webuser;
     }
 
@@ -77,7 +77,7 @@ public class WebuserUserprofile implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		WebuserUserprofile other = (WebuserUserprofile) obj;
+		WebUserProfile other = (WebUserProfile) obj;
 		if (userProfileID == null) {
 			if (other.userProfileID != null)
 				return false;

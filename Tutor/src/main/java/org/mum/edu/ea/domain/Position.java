@@ -81,7 +81,7 @@ public class Position implements Serializable {
         @JoinColumn(name = "positions_ID", referencedColumnName = "ID")}, inverseJoinColumns = {
         @JoinColumn(name = "webUsers_ID", referencedColumnName = "ID")})
     @ManyToMany
-    private Collection<Webuser> webuserCollection;
+    private Collection<WebUser> webuserCollection;
     @JoinColumn(name = "LOCATION_ID", referencedColumnName = "ID")
     @ManyToOne
     private Location locationId;
@@ -163,11 +163,11 @@ public class Position implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Webuser> getWebuserCollection() {
+    public Collection<WebUser> getWebuserCollection() {
         return webuserCollection;
     }
 
-    public void setWebuserCollection(Collection<Webuser> webuserCollection) {
+    public void setWebuserCollection(Collection<WebUser> webuserCollection) {
         this.webuserCollection = webuserCollection;
     }
 

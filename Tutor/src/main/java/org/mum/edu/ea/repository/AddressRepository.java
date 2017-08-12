@@ -8,5 +8,12 @@ import org.mum.edu.ea.domain.Address;
 
 @Repository
 public interface AddressRepository extends JpaRepository<Address,Long> {
+	
+	/**
+	 * 
+	 * @param zipcode
+	 * @return <strong>Address</strong>
+	 */
+	Address findByZipcode(String zipcode);
         
 }

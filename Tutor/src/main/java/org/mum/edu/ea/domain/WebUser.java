@@ -47,7 +47,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Webuser.findByLastname", query = "SELECT w FROM Webuser w WHERE w.lastname = :lastname")
     , @NamedQuery(name = "Webuser.findByPassword", query = "SELECT w FROM Webuser w WHERE w.password = :password")
     , @NamedQuery(name = "Webuser.findByStatus", query = "SELECT w FROM Webuser w WHERE w.status = :status")})
-public class Webuser implements Serializable {
+public class WebUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -87,16 +87,16 @@ public class Webuser implements Serializable {
     @OneToMany(mappedBy = "webuserId")
     private Collection<Message> messageCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "webuser")
-    private Collection<WebuserUserprofile> webuserUserprofileCollection;
+    private Collection<WebUserProfile> WebUserProfileCollection;
 
-    public Webuser() {
+    public WebUser() {
     }
 
-    public Webuser(Long id) {
+    public WebUser(Long id) {
         this.id = id;
     }
 
-    public Webuser(Long id, Date lastconnected) {
+    public WebUser(Long id, Date lastconnected) {
         this.id = id;
         this.lastconnected = lastconnected;
     }
@@ -192,12 +192,12 @@ public class Webuser implements Serializable {
     }
 
     @XmlTransient
-    public Collection<WebuserUserprofile> getWebuserUserprofileCollection() {
-        return webuserUserprofileCollection;
+    public Collection<WebUserProfile> getWebUserProfileCollection() {
+        return WebUserProfileCollection;
     }
 
-    public void setWebuserUserprofileCollection(Collection<WebuserUserprofile> webuserUserprofileCollection) {
-        this.webuserUserprofileCollection = webuserUserprofileCollection;
+    public void setWebUserProfileCollection(Collection<WebUserProfile> WebUserProfileCollection) {
+        this.WebUserProfileCollection = WebUserProfileCollection;
     }
 
     @Override
@@ -210,10 +210,10 @@ public class Webuser implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Webuser)) {
+        if (!(object instanceof WebUser)) {
             return false;
         }
-        Webuser other = (Webuser) object;
+        WebUser other = (WebUser) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
