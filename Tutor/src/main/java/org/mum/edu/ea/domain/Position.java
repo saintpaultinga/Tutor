@@ -150,7 +150,6 @@ public class Position implements Serializable {
     public Collection<WebUser> getWebuserCollection() {
         return webuserCollection;
     }
-
     public void setWebusterCollection(Collection<WebUser> webuserCollection) {
         this.webuserCollection = webuserCollection;
     }
