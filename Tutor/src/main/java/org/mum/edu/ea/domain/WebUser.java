@@ -39,14 +39,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "webuser")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Webuser.findAll", query = "SELECT w FROM Webuser w")
-    , @NamedQuery(name = "Webuser.findById", query = "SELECT w FROM Webuser w WHERE w.id = :id")
-    , @NamedQuery(name = "Webuser.findByEmail", query = "SELECT w FROM Webuser w WHERE w.email = :email")
-    , @NamedQuery(name = "Webuser.findByFirstname", query = "SELECT w FROM Webuser w WHERE w.firstname = :firstname")
-    , @NamedQuery(name = "Webuser.findByLastconnected", query = "SELECT w FROM Webuser w WHERE w.lastconnected = :lastconnected")
-    , @NamedQuery(name = "Webuser.findByLastname", query = "SELECT w FROM Webuser w WHERE w.lastname = :lastname")
-    , @NamedQuery(name = "Webuser.findByPassword", query = "SELECT w FROM Webuser w WHERE w.password = :password")
-    , @NamedQuery(name = "Webuser.findByStatus", query = "SELECT w FROM Webuser w WHERE w.status = :status")})
+    @NamedQuery(name = "WebUser.findAll", query = "SELECT w FROM WebUser w")
+    , @NamedQuery(name = "WebUser.findById", query = "SELECT w FROM WebUser w WHERE w.id = :id")
+    , @NamedQuery(name = "WebUser.findByEmail", query = "SELECT w FROM WebUser w WHERE w.email = :email")
+    , @NamedQuery(name = "WebUser.findByFirstname", query = "SELECT w FROM WebUser w WHERE w.firstname = :firstname")
+    , @NamedQuery(name = "WebUser.findByLastconnected", query = "SELECT w FROM WebUser w WHERE w.lastconnected = :lastconnected")
+    , @NamedQuery(name = "WebUser.findByLastname", query = "SELECT w FROM WebUser w WHERE w.lastname = :lastname")
+    , @NamedQuery(name = "WebUser.findByPassword", query = "SELECT w FROM WebUser w WHERE w.password = :password")
+    , @NamedQuery(name = "WebUser.findByStatus", query = "SELECT w FROM WebUser w WHERE w.status = :status")})
 public class WebUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
