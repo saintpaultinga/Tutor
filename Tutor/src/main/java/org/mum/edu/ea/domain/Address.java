@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -51,8 +52,10 @@ public class Address implements Serializable {
     @Size(max = 255)
     @Column(name = "STREET")
     private String street;
+    @Pattern(regexp ="^[0-9]{5}(-[0-9]{4})?$")
+    private int zipcode;
     @OneToMany(mappedBy = "addressId")
-    private Collection<Webuser> webuserCollection;
+    private Collection<WebUser> webuserCollection;
 
     public Address() {
     }
@@ -94,11 +97,11 @@ public class Address implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Webuser> getWebuserCollection() {
+    public Collection<WebUser> getWebuserCollection() {
         return webuserCollection;
     }
 
-    public void setWebuserCollection(Collection<Webuser> webuserCollection) {
+    public void setWebuserCollection(Collection<WebUser> webuserCollection) {
         this.webuserCollection = webuserCollection;
     }
 

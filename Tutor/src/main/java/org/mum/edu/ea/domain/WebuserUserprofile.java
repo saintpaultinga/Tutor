@@ -47,16 +47,16 @@ public class WebuserUserprofile implements Serializable {
 	private WebUserProfileType type ;
     @JoinColumn(name = "WebUser_ID", referencedColumnName = "ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Webuser webuser;
+    private WebUser webuser;
 
     public WebuserUserprofile() {
     }
 
-    public Webuser getWebuser() {
+    public WebUser getWebuser() {
         return webuser;
     }
 
-    public void setWebuser(Webuser webuser) {
+    public void setWebuser(WebUser webuser) {
         this.webuser = webuser;
     }
 
