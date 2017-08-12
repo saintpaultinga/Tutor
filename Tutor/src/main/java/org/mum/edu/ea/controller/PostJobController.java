@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,9 +30,7 @@ public class PostJobController {
     @RequestMapping(value = "/addPosition",method = RequestMethod.POST)
     public Position postJob(Position position, Principal principal,Model model){
         position.setStatus(PositionStatus.ACTIVATE);
-        PositionCategory positionCategory = new PositionCategory();
-        positionCategory.setType(Category.IT);
-        position.setCategory(positionCategory);
+        position.setPosteddate(new Date());
         return jobService.createPosition(position);
     }
     @RequestMapping(value = "/addPosition",method = RequestMethod.GET)

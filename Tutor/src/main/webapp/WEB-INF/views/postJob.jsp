@@ -35,13 +35,13 @@
                 <input type="text" class="form-control" name="duration" id="inputDuration" placeholder="Duration">
             </div>
             <div class="form-group">
-                <label for="inputPosteddate" class="col-form-label">PostedDate</label>
-                <input type="text" class="form-control" name="posteddate" id="inputPosteddate" placeholder="PostedDate">
+                <%--<label for="inputPosteddate" class="col-form-label">PostedDate</label>--%>
+                <input type="hidden" class="form-control" name="posteddate" id="inputPosteddate" value="">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputCity" class="col-form-label">City</label>
-                    <input type="text" class="form-control" id="inputCity">
+                    <label for="inputEstimatedwage" class="col-form-label">Estimated Wage</label>
+                    <input type="text" class="form-control" id="inputEstimatedwage" name="estimatedwage">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputCategory" class="col-form-label">Category</label>
