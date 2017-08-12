@@ -10,10 +10,12 @@ import org.springframework.data.geo.Point;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -22,7 +24,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "position")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Position.findAll", query = "SELECT p FROM Position p")
     , @NamedQuery(name = "Position.findById", query = "SELECT p FROM Position p WHERE p.id = :id")
@@ -42,7 +43,7 @@ public class Position implements Serializable {
     @Column(name = "ID")
     private Long id;
 //    @Size(max = 255)
-    @ManyToOne(cascade =CascadeType.ALL)
+    @ManyToOne(cascade =CascadeType.MERGE)
     private PositionCategory category;
     @Column(name = "DURATION")
     private Integer duration;
@@ -54,7 +55,7 @@ public class Position implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date posteddate;
 //    @Size(max = 255)
-        @Column(name = "STATUS")
+    @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
     private PositionStatus status;
     @Size(max = 255)
@@ -63,13 +64,13 @@ public class Position implements Serializable {
     @Size(max = 255)
     @Column(name = "DESCRIPTION")
     private String description;
+    @OneToMany
     @JoinTable(name = "webuser_position", joinColumns = {
         @JoinColumn(name = "positions_ID", referencedColumnName = "ID")}, inverseJoinColumns = {
         @JoinColumn(name = "webUsers_ID", referencedColumnName = "ID")})
-    @ManyToMany
-    private Collection<WebUser> webuserCollection;
+    private Set<WebUser> webuserCollection = new HashSet<>();
     @JoinColumn(name = "LOCATION_ID", referencedColumnName = "ID")
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.PERSIST)
     private Location locationId;
 
     public Position() {
@@ -152,7 +153,7 @@ public class Position implements Serializable {
     public Collection<WebUser> getWebuserCollection() {
         return webuserCollection;
     }
-    public void setWebusterCollection(Collection<WebUser> webuserCollection) {
+    public void setWebusterCollection(Set<WebUser> webuserCollection) {
         this.webuserCollection = webuserCollection;
     }
 
@@ -163,6 +164,13 @@ public class Position implements Serializable {
     public void setLocationId(Location locationId) {
         this.locationId = locationId;
     }
+    
+    
+	public void addUser(WebUser b) {
+		b.getPositionCollection().add(this);
+		this.getWebuserCollection().add(b);
+
+	}
 
     @Override
     public int hashCode() {
