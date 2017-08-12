@@ -64,8 +64,9 @@ public class WebUser implements Serializable {
     @Size(max = 255)
     @Column(name = "FIRSTNAME")
     private String firstname;
-    @Basic(optional = false)
-    @NotNull
+    @Size(max = 255)
+    @Column(name = "Title")
+    private String title;
     @Column(name = "LASTCONNECTED")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastconnected;
@@ -81,7 +82,7 @@ public class WebUser implements Serializable {
     @Lob
     @Column(name = "PICTURE")
     private byte[] picture;
-    @ManyToMany(mappedBy = "webuserCollection")
+    @ManyToMany(mappedBy = "webuserCollection",cascade = CascadeType.ALL)
     private Set<Position> positionCollection = new HashSet<>();
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ID")
     @ManyToOne
@@ -210,6 +211,12 @@ public class WebUser implements Serializable {
     public void setWebUserProfileCollection(Set<WebUserProfile> WebUserProfileCollection) {
         this.WebUserProfileCollection = WebUserProfileCollection;
     }
+    
+    public void addPosition(Position p) {
+		p.getWebuserCollection().add(this);
+		this.positionCollection.add(p);
+
+	}
 
     @Override
     public int hashCode() {
@@ -235,5 +242,15 @@ public class WebUser implements Serializable {
     public String toString() {
         return "com.example.domain.Webuser[ id=" + id + " ]";
     }
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+    
+    
     
 }

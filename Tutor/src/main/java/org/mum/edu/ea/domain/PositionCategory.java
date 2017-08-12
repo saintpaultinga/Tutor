@@ -12,21 +12,22 @@ public class PositionCategory implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long pcategoryId;	
 
 	@Column(name="TYPE", length=15, unique=true, nullable=false)
 	@Enumerated(EnumType.STRING)
 	private Category type ;
-	@OneToMany(mappedBy = "category")
-	private Collection<Position> positions;
+    
+	
 
-	public Integer getId() {
-		return id;
+	public Long getPcategoryId() {
+		return pcategoryId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setPcategoryId(Long pcategoryId) {
+		this.pcategoryId = pcategoryId;
 	}
 
 	public Category getType() {
@@ -37,11 +38,4 @@ public class PositionCategory implements Serializable {
 		this.type = type;
 	}
 
-	public Collection<Position> getPositions() {
-		return positions;
-	}
-
-	public void setPositions(Collection<Position> positions) {
-		this.positions = positions;
-	}
 }
