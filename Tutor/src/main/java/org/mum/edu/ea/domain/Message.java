@@ -58,7 +58,7 @@ public class Message implements Serializable {
     private String status;
     @JoinColumn(name = "WEBUSER_ID", referencedColumnName = "ID")
     @ManyToOne
-    private Webuser webuserId;
+    private WebUser webuserId;
 
     public Message() {
     }
@@ -104,11 +104,11 @@ public class Message implements Serializable {
         this.status = status;
     }
 
-    public Webuser getWebuserId() {
+    public WebUser getWebuserId() {
         return webuserId;
     }
 
-    public void setWebuserId(Webuser webuserId) {
+    public void setWebuserId(WebUser webuserId) {
         this.webuserId = webuserId;
     }
 
