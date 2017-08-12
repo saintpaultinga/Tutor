@@ -8,6 +8,9 @@ package org.mum.edu.ea.domain;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -45,8 +48,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "WebUser.findByFirstname", query = "SELECT w FROM WebUser w WHERE w.firstname = :firstname")
     , @NamedQuery(name = "WebUser.findByLastconnected", query = "SELECT w FROM WebUser w WHERE w.lastconnected = :lastconnected")
     , @NamedQuery(name = "WebUser.findByLastname", query = "SELECT w FROM WebUser w WHERE w.lastname = :lastname")
-    , @NamedQuery(name = "WebUser.findByPassword", query = "SELECT w FROM WebUser w WHERE w.password = :password")
-    , @NamedQuery(name = "WebUser.findByStatus", query = "SELECT w FROM WebUser w WHERE w.status = :status")})
+    , @NamedQuery(name = "WebUser.findByPassword", query = "SELECT w FROM WebUser w WHERE w.password = :password")})
 public class WebUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -73,21 +75,21 @@ public class WebUser implements Serializable {
     @Size(max = 255)
     @Column(name = "PASSWORD")
     private String password;
-    @Size(max = 255)
-    @Column(name = "STATUS")
-    private String status;
+    @Size(max = 20)
+    private String phone;
+	private boolean enabled=true;
     @Lob
     @Column(name = "PICTURE")
     private byte[] picture;
     @ManyToMany(mappedBy = "webuserCollection")
-    private Collection<Position> positionCollection;
+    private Set<Position> positionCollection = new HashSet<>();
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ID")
     @ManyToOne
     private Address addressId;
     @OneToMany(mappedBy = "webuserId")
     private Collection<Message> messageCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "webuser")
-    private Collection<WebUserProfile> WebUserProfileCollection;
+    private Set<WebUserProfile> WebUserProfileCollection = new HashSet<>();
 
     public WebUser() {
     }
@@ -149,15 +151,24 @@ public class WebUser implements Serializable {
         this.password = password;
     }
 
-    public String getStatus() {
-        return status;
-    }
+     
+    public String getPhone() {
+		return phone;
+	}
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public byte[] getPicture() {
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public byte[] getPicture() {
         return picture;
     }
 
@@ -170,7 +181,7 @@ public class WebUser implements Serializable {
         return positionCollection;
     }
 
-    public void setPositionCollection(Collection<Position> positionCollection) {
+    public void setPositionCollection(Set<Position> positionCollection) {
         this.positionCollection = positionCollection;
     }
 
@@ -196,7 +207,7 @@ public class WebUser implements Serializable {
         return WebUserProfileCollection;
     }
 
-    public void setWebUserProfileCollection(Collection<WebUserProfile> WebUserProfileCollection) {
+    public void setWebUserProfileCollection(Set<WebUserProfile> WebUserProfileCollection) {
         this.WebUserProfileCollection = WebUserProfileCollection;
     }
 
