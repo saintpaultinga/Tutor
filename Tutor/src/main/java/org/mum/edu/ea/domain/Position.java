@@ -5,6 +5,8 @@
  */
 package org.mum.edu.ea.domain;
 
+import org.springframework.data.geo.Point;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -181,6 +183,7 @@ public class Position implements Serializable {
         }
         return true;
     }
+
 
     @Override
     public String toString() {
