@@ -98,7 +98,7 @@ public class TutorApplicationTests {
 		user.setLastname("TestFisrt");
 		user.setEnabled(true);
 		user.setPhone("64123301255");
-		user.setPassword("test1");
+		user.setPassword("hello");
 		user.setTitle("Java Developer");
 		
 		wrepository.save(user);
