@@ -1288,7 +1288,7 @@
       <workItem from="1502722450152" duration="1421000" />
       <workItem from="1502723915586" duration="1784000" />
       <workItem from="1502725738131" duration="5258000" />
-      <workItem from="1502743211823" duration="4139000" />
+      <workItem from="1502743211823" duration="4824000" />
     </task>
     <servers />
   </component>
@@ -1325,7 +1325,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="111095000" />
+=======
+    <option name="totallyTimeSpent" value="111108000" />
+>>>>>>> 4eea1e16e5c0463b475855e50cef63a2cf66e532
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1854,14 +1858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/repository/WebUserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/service/WebUserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -1870,6 +1866,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/serviceimpl/WebUserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
@@ -1881,6 +1878,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 4eea1e16e5c0463b475855e50cef63a2cf66e532
     <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/repository/WebUserProfileRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -1912,6 +1911,25 @@
         <state relative-caret-position="-2146">
           <caret line="57" column="43" lean-forward="true" selection-start-line="57" selection-start-column="43" selection-end-line="57" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/repository/WebUserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/serviceimpl/WebUserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2660#2661#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
