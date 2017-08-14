@@ -19,6 +19,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -74,8 +75,14 @@ public class WebUser implements Serializable {
     @Column(name = "LASTNAME")
     private String lastname;
     @Size(max = 255)
+    @Column(name = "UserName")
+    private String username;
+    @Size(max = 255)
     @Column(name = "PASSWORD")
     private String password;
+    @Size(max = 255)
+    @Column(name = "ConfirmedPassword")
+    private String confirmedpassword;
     @Size(max = 20)
     private String phone;
 	private boolean enabled=true;
@@ -89,7 +96,8 @@ public class WebUser implements Serializable {
     private Address addressId;
     @OneToMany(mappedBy = "webuserId")
     private Collection<Message> messageCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "webuser")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<WebUserProfile> WebUserProfileCollection = new HashSet<>();
 
     public WebUser() {
@@ -128,7 +136,15 @@ public class WebUser implements Serializable {
         this.firstname = firstname;
     }
 
-    public Date getLastconnected() {
+    public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public Date getLastconnected() {
         return lastconnected;
     }
 
@@ -139,8 +155,16 @@ public class WebUser implements Serializable {
     public String getLastname() {
         return lastname;
     }
+    
+    public String getConfirmedpassword() {
+		return confirmedpassword;
+	}
 
-    public void setLastname(String lastname) {
+	public void setConfirmedpassword(String confirmedpassword) {
+		this.confirmedpassword = confirmedpassword;
+	}
+
+	public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
@@ -215,6 +239,12 @@ public class WebUser implements Serializable {
     public void addPosition(Position p) {
 		p.getWebuserCollection().add(this);
 		this.positionCollection.add(p);
+
+	}
+    
+    public void addProfile(WebUserProfile p) {
+	    
+    	this.WebUserProfileCollection.add(p);
 
 	}
 

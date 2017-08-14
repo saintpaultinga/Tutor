@@ -10,10 +10,11 @@ import org.mum.edu.ea.domain.Location;
 import org.mum.edu.ea.domain.PositionCategory;
 import org.mum.edu.ea.domain.PositionStatus;
 import org.mum.edu.ea.domain.WebUser;
+import org.mum.edu.ea.domain.WebUserProfile;
 import org.mum.edu.ea.domain.WebUserProfileType;
 import org.mum.edu.ea.repository.IPostJob;
 import org.mum.edu.ea.repository.PositionCategoryRepository;
-import org.mum.edu.ea.repository.WebUserProfileTypeRepository;
+import org.mum.edu.ea.repository.WebUserProfileRepository;
 import org.mum.edu.ea.repository.WebUserRepository;
 import org.mum.edu.ea.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class TutorApplicationTests {
 
 	@Autowired
-	private WebUserProfileTypeRepository roleRepository;
+	private WebUserProfileRepository roleRepository;
 	@Autowired
 	PositionCategoryRepository catrepository;
 
@@ -37,8 +38,8 @@ public class TutorApplicationTests {
 	@Test
 	public void insertRole() {
 
-		WebUserProfileType newrole = new WebUserProfileType();
-		newrole.setProfilename("Admin");
+		WebUserProfile newrole = new WebUserProfile();
+		newrole.setRole(WebUserProfileType.ADMIN);
 
 		roleRepository.save(newrole);
 
@@ -92,7 +93,7 @@ public class TutorApplicationTests {
 	public void testInsertUser() {
 		
 		WebUser user = new WebUser();
-		user.setEmail("test@gmail.com");
+		user.setEmail("test3@gmail.com");
 		user.setFirstname("tset1");
 		user.setLastname("TestFisrt");
 		user.setEnabled(true);
@@ -108,6 +109,14 @@ public class TutorApplicationTests {
 		
 	}
 	
+
+	@Test
+	public void findUser() {
+		WebUser user = wrepository.findWebUserByEmail("test2@gmail.com");
+			
+		 assertTrue("---test position insertion----",user.getFirstname().equalsIgnoreCase("kita"));
+		
+	}
 	
 
 }

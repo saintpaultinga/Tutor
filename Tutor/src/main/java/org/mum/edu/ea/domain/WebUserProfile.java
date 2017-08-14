@@ -11,27 +11,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author TSPDEV
  */
 @Entity
-@Table(name = "webuser_userprofile")
-@NamedQueries({
-    @NamedQuery(name = "WebUserProfile.findAll", query = "SELECT w FROM WebUserProfile w")
-    , @NamedQuery(name = "WebUserProfile.findByWebUserID", query = "SELECT w FROM WebUserProfile w WHERE w.webuser = :webUserID")
-    , @NamedQuery(name = "WebUserProfile.findByUserProfileID", query = "SELECT w FROM WebUserProfile w WHERE w.userProfileID = :userProfileID")})
+@Table(name = "role")
 public class WebUserProfile implements Serializable {
 
 	/**
@@ -41,24 +31,13 @@ public class WebUserProfile implements Serializable {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer userProfileID;	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="role_id")
-	private WebUserProfileType role ;
-    @JoinColumn(name = "WebUser_ID", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
-    private WebUser webuser;
 
+	@Column(name="TYPE", length=15, unique=true, nullable=false)
+	@Enumerated(EnumType.STRING)
+	private WebUserProfileType role ;
+	
     public WebUserProfile() {
     }
-
-    public WebUser getWebuser() {
-        return webuser;
-    }
-
-    public void setWebuser(WebUser webuser) {
-        this.webuser = webuser;
-    }
-    
     
 
 	public Integer getUserProfileID() {
@@ -81,10 +60,11 @@ public class WebUserProfile implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((userProfileID == null) ? 0 : userProfileID.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
+		result = prime * result + ((userProfileID == null) ? 0 : userProfileID.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -95,19 +75,17 @@ public class WebUserProfile implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		WebUserProfile other = (WebUserProfile) obj;
+		if (role != other.role)
+			return false;
 		if (userProfileID == null) {
 			if (other.userProfileID != null)
 				return false;
 		} else if (!userProfileID.equals(other.userProfileID))
 			return false;
-		if (role == null) {
-			if (other.role != null)
-				return false;
-		} else if (!role.equals(other.role))
-			return false;
 		return true;
 	}
-    
+
+	
     
 
     
