@@ -84,7 +84,7 @@ public class WebUserServiceImpl implements WebUserService {
 	public void deleteUserById(Long Id) {
 
 		userRepository.delete(Id);
-		;
+		
 	}
 
 	@Override

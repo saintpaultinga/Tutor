@@ -38,8 +38,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private UserDetailsService userDetailsService;
+ 
 
     @Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -66,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
+		System.out.println("***************************************");
 		http.
 			authorizeRequests()
 				.antMatchers("/").permitAll()
@@ -88,7 +87,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					public void commence(HttpServletRequest arg0, HttpServletResponse arg1, AuthenticationException arg2)
 							throws IOException, ServletException {
 						 RedirectStrategy redirectme= new DefaultRedirectStrategy();
-						 
+						 arg2.printStackTrace();
+						 System.out.println("-------------------Callled-----------------------------");
 						  redirectme.sendRedirect(arg0, arg1, "/login");
 					}
 				});
