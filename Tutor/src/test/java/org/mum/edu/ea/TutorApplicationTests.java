@@ -48,16 +48,19 @@ public class TutorApplicationTests {
 		assertTrue("---test role insertion----", number_of_role == 1);
 
 	}
-	
-	
+
+
     @Test
 	public void testCreatePositionCategory() {
 		PositionCategory po = new PositionCategory();
 		po.setType(Category.IT);
 		catrepository.save(po);
+		po.setType(Category.SCIENCE);
+		catrepository.save(po);
+
 		 int number_of_position = catrepository.findAll().size();
 
-	    assertTrue("---test position insertion----", number_of_position == 1);
+	    assertTrue("---test position insertion----", number_of_position == 2);
 	}
 
 	@Test
@@ -66,32 +69,34 @@ public class TutorApplicationTests {
 		Position p = new Position();
 		// add position field;
 		p.setDuration(6);
-		p.setDescription("-I want a qualified pepople in mathematique to help my song");
+		p.setDescription("I want a qualified pepople in mathematique to help my song");
 		p.setTitle("Maths Teacher");
 		p.setStatus(PositionStatus.ACTIVATE);
-		p.setPosteddate(DateUtils.returnCurrentDate());
+		p.setDeadline(DateUtils.returnCurrentDate());
 		p.setEstimatedwage(1000);
 		// set the position category
 		 PositionCategory pc = catrepository.findByType(Category.IT);
-		 p.setCategory(pc);
+//		 p.setCategory(pc);
+		 p.setPostedBy("test@gmail.com");
 		 //set location
 		 Location l = new Location();
 		 l.setCity("FairField");
 		 l.setState("IA");
 		 l.setStreet("1000N 4Street");
-		
-		 p.setLocationId(l);
-		 
+
+
+//		 p.setLocationId(l);
+		 p.setJobLocation("1000 N 4th Street,Fairfield,IA");
 		 positionrepository.save(p);
-		
+
 		 int number_of_position = positionrepository.findAll().size();
-		
+
 		 assertTrue("---test position insertion----",number_of_position == 1);
 	}
-	
+
 	@Test
 	public void testInsertUser() {
-		
+
 		WebUser user = new WebUser();
 		user.setEmail("test3@gmail.com");
 		user.setFirstname("tset1");
@@ -100,13 +105,13 @@ public class TutorApplicationTests {
 		user.setPhone("64123301255");
 		user.setPassword("hello");
 		user.setTitle("Java Developer");
-		
+
 		wrepository.save(user);
-		
+
 		int number_of_position = wrepository.findAll().size();
-			
+
 		 assertTrue("---test position insertion----",number_of_position == 1);
-		
+
 	}
 	
 

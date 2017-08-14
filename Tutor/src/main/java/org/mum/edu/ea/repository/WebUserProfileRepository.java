@@ -5,6 +5,8 @@ import org.mum.edu.ea.domain.WebUserProfileType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 public interface WebUserProfileRepository extends JpaRepository<WebUserProfile, Long> {
