@@ -211,12 +211,7 @@ public class WebUser implements Serializable {
     public void setWebUserProfileCollection(Set<WebUserProfile> WebUserProfileCollection) {
         this.WebUserProfileCollection = WebUserProfileCollection;
     }
-    
-    public void addPosition(Position p) {
-		p.getWebuserCollection().add(this);
-		this.positionCollection.add(p);
 
-	}
 
     @Override
     public int hashCode() {

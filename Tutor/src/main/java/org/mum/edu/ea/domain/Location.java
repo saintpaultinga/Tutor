@@ -44,8 +44,8 @@ public class Location implements Serializable {
     @Size(max = 255)
     @Column(name = "STREET")
     private String street;
-    @OneToMany(mappedBy = "locationId")
-    private Collection<Position> positionCollection;
+//    @OneToMany(mappedBy = "locationId")
+//    private Collection<Position> positionCollection;
 
     public Location() {
     }
@@ -86,14 +86,14 @@ public class Location implements Serializable {
         this.street = street;
     }
 
-    @XmlTransient
-    public Collection<Position> getPositionCollection() {
-        return positionCollection;
-    }
-
-    public void setPositionCollection(Collection<Position> positionCollection) {
-        this.positionCollection = positionCollection;
-    }
+//    @XmlTransient
+//    public Collection<Position> getPositionCollection() {
+//        return positionCollection;
+//    }
+//
+//    public void setPositionCollection(Collection<Position> positionCollection) {
+//        this.positionCollection = positionCollection;
+//    }
 
     @Override
     public int hashCode() {
