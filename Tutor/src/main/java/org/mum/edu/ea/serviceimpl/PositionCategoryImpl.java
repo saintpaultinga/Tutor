@@ -6,6 +6,11 @@ import org.mum.edu.ea.domain.PositionCategory;
 import org.mum.edu.ea.repository.PositionCategoryRepository;
 import org.mum.edu.ea.service.PositionCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
 public class PositionCategoryImpl implements PositionCategoryService{
 	
     @Autowired
@@ -17,6 +22,11 @@ public class PositionCategoryImpl implements PositionCategoryService{
 		 
 		
 		return prepository.findByType(c);
+	}
+
+	@Override
+	public List<PositionCategory> findAll() {
+		return prepository.findAll();
 	}
 
 }

@@ -1,21 +1,29 @@
 package org.mum.edu.ea.controller;
 
-import org.mum.edu.ea.domain.Category;
-import org.mum.edu.ea.domain.Position;
-import org.mum.edu.ea.domain.PositionCategory;
-import org.mum.edu.ea.domain.PositionStatus;
+import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.sun.xml.internal.bind.v2.runtime.*;
+import com.sun.xml.internal.bind.v2.runtime.Location;
+import org.mum.edu.ea.domain.*;
+//import org.mum.edu.ea.domain.Location;
+import org.mum.edu.ea.repository.WebUserProfileTypeRepository;
 import org.mum.edu.ea.service.IPostJobService;
+import org.mum.edu.ea.service.PositionCategoryService;
+import org.mum.edu.ea.serviceimpl.PositionCategoryImpl;
+import org.mum.edu.ea.serviceimpl.WebUserServiceImpl;
+import org.mum.edu.ea.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Zamuna on 8/11/2017.
@@ -26,39 +34,67 @@ import java.util.List;
 public class PostJobController {
     @Autowired
     IPostJobService jobService;
+    @Autowired
+    WebUserServiceImpl webUserService;
+    @Autowired
+    PositionCategoryImpl positionCategoryService;
 
-    @RequestMapping(value = "/addPosition",method = RequestMethod.POST)
-    public Position postJob(Position position, Principal principal,Model model){
+    WebUserProfileTypeRepository webUserProfileTypeRepository;
+
+    @RequestMapping(value = "/addPosition", method = RequestMethod.POST)
+    public String postJob(Position position, Principal principal, Model model) {
+        //TODO get user
         position.setStatus(PositionStatus.ACTIVATE);
-        position.setPosteddate(new Date());
-        return jobService.createPosition(position);
-    }
-    @RequestMapping(value = "/addPosition",method = RequestMethod.GET)
-    public String postJobForm(Model model)
-    {
-        System.out.println(java.util.Arrays.asList(Category.values()));
-        model.addAttribute("categories",Category.values());
-        return "postJob";
+        String email = "test@gmail.com";
+        WebUser webUser = webUserService.findById(1l);
+        position.setPostedBy(webUser.getEmail());
+        jobService.createPosition(position);
+        return "redirect:../getPosition/" + position.getId();
     }
 
-    @RequestMapping(value = "/getAllPosition",method = RequestMethod.GET)
-    public List<Position> getAll(){
-        return jobService.getAllPosition();
+    @RequestMapping(value = "/addPosition", method = RequestMethod.GET)
+    public String postJobForm(Model model) {
+        model.addAttribute("categories", Category.values());
+        model.addAttribute("states", State.values());
+        model.addAttribute("pos", new Position());
+        return "/postJob/postJob";
     }
 
-    @RequestMapping(value = "/getPosition",method = RequestMethod.GET)
-    public Position getOne(Long id){
-        return jobService.getPosition(id);
+    @RequestMapping(value = "/getAllPosition", method = RequestMethod.GET)
+    public String getAll(Model model) {
+        model.addAttribute("positionList", jobService.getAllPosition());
+        return "postJob/postList";
     }
 
-    @RequestMapping(value = "/updatePosition",method = RequestMethod.POST)
-    public Position updatePosition(Position position){
-        return jobService.updatePosition(position);
+    @RequestMapping(value = "/getPosition/{id}", method = RequestMethod.GET)
+    public String getOne(@PathVariable Long id, Model model) {
+        model.addAttribute("position", jobService.getPosition(id));
+        return "postJob/postDetail";
     }
 
-    @RequestMapping(value = "/deletePosition",method = RequestMethod.DELETE)
-    public void deletePosition(Long id,Position position){
-        jobService.deletePosition(id,position);
+    @RequestMapping(value = "/addPosition/{id}", method = RequestMethod.POST)
+    public String updatePosition(Position position, @PathVariable("id") Long id) {
+        //TODO get user
+        WebUser webUser = webUserService.findById(1l);
+        position.setPostedBy(webUser.getEmail());
+        position.setStatus(PositionStatus.ACTIVATE);
+        jobService.updatePosition(position);
+        return "redirect:../getPosition/" + position.getId();
     }
 
+    @RequestMapping(value = "/updatePosition/{id}", method = RequestMethod.GET)
+    public String updatePositionForm(Position position, @PathVariable Long id, Model model) {
+        model.addAttribute("pos", jobService.getPosition(id));
+        model.addAttribute("jobPosition", jobService.getPosition(id));
+        model.addAttribute("categories", positionCategoryService.findAll());
+        model.addAttribute("states", State.values());
+        model.addAttribute("location", new org.mum.edu.ea.domain.Location());
+        return "/postJob/postJob";
+    }
+
+    @RequestMapping(value = "/deletePosition/{id}", method = RequestMethod.GET)
+    public String deletePosition(Position position, @PathVariable("id") Long id) {
+        jobService.deletePosition(position);
+        return "redirect:../getAllPosition";
+    }
 }

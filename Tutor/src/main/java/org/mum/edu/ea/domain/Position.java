@@ -6,6 +6,7 @@
 package org.mum.edu.ea.domain;
 
 import org.springframework.data.geo.Point;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -30,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Position.findByCategory", query = "SELECT p FROM Position p WHERE p.category = :category")
     , @NamedQuery(name = "Position.findByDuration", query = "SELECT p FROM Position p WHERE p.duration = :duration")
     , @NamedQuery(name = "Position.findByEstimatedwage", query = "SELECT p FROM Position p WHERE p.estimatedwage = :estimatedwage")
-    , @NamedQuery(name = "Position.findByPosteddate", query = "SELECT p FROM Position p WHERE p.posteddate = :posteddate")
+//    , @NamedQuery(name = "Position.findByPosteddate", query = "SELECT p FROM Position p WHERE p.posteddate = :posteddate")
     , @NamedQuery(name = "Position.findByStatus", query = "SELECT p FROM Position p WHERE p.status = :status")
     , @NamedQuery(name = "Position.findByTitle", query = "SELECT p FROM Position p WHERE p.title = :title")
     , @NamedQuery(name = "Position.findByDescription", query = "SELECT p FROM Position p WHERE p.description = :description")})
@@ -43,17 +44,19 @@ public class Position implements Serializable {
     @Column(name = "ID")
     private Long id;
 //    @Size(max = 255)
-    @ManyToOne(cascade =CascadeType.MERGE)
-    private PositionCategory category;
+//    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.EAGER)
+//    @ManyToOne
+    private String category;
     @Column(name = "DURATION")
     private Integer duration;
     @Column(name = "ESTIMATEDWAGE")
     private Integer estimatedwage;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "POSTEDDATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date posteddate;
+//    @Basic(optional = false)
+//    @NotNull
+    @Column(name = "DEADLINE")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date deadline;
 //    @Size(max = 255)
     @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
@@ -64,14 +67,18 @@ public class Position implements Serializable {
     @Size(max = 255)
     @Column(name = "DESCRIPTION")
     private String description;
-    @OneToMany
-    @JoinTable(name = "webuser_position", joinColumns = {
+    @Size(max = 255)
+    @Column(name = "posted_by")
+    private String postedBy;
+    @ManyToMany
+    @JoinTable(name = "appliedBy_position", joinColumns = {
         @JoinColumn(name = "positions_ID", referencedColumnName = "ID")}, inverseJoinColumns = {
         @JoinColumn(name = "webUsers_ID", referencedColumnName = "ID")})
     private Set<WebUser> webuserCollection = new HashSet<>();
-    @JoinColumn(name = "LOCATION_ID", referencedColumnName = "ID")
-    @ManyToOne (cascade = CascadeType.PERSIST)
-    private Location locationId;
+//    @JoinColumn(name = "LOCATION_ID", referencedColumnName = "ID")
+//    @ManyToOne (cascade = CascadeType.PERSIST)
+//    private Location locationId;
+    private String jobLocation;
 
     public Position() {
     }
@@ -80,10 +87,6 @@ public class Position implements Serializable {
         this.id = id;
     }
 
-    public Position(Long id, Date posteddate) {
-        this.id = id;
-        this.posteddate = posteddate;
-    }
 
     public Long getId() {
         return id;
@@ -93,11 +96,11 @@ public class Position implements Serializable {
         this.id = id;
     }
 
-    public PositionCategory getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(PositionCategory category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
@@ -117,12 +120,12 @@ public class Position implements Serializable {
         this.estimatedwage = estimatedwage;
     }
 
-    public Date getPosteddate() {
-        return posteddate;
+    public Date getDeadline() {
+        return deadline;
     }
 
-    public void setPosteddate(Date posteddate) {
-        this.posteddate = posteddate;
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
     }
 
     public PositionStatus getStatus() {
@@ -149,28 +152,21 @@ public class Position implements Serializable {
         this.description = description;
     }
 
-    @XmlTransient
-    public Collection<WebUser> getWebuserCollection() {
-        return webuserCollection;
-    }
-    public void setWebusterCollection(Set<WebUser> webuserCollection) {
-        this.webuserCollection = webuserCollection;
+    public String getJobLocation() {
+        return jobLocation;
     }
 
-    public Location getLocationId() {
-        return locationId;
+    public void setJobLocation(String jobLocation) {
+        this.jobLocation = jobLocation;
     }
 
-    public void setLocationId(Location locationId) {
-        this.locationId = locationId;
+    public String getPostedBy() {
+        return postedBy;
     }
-    
-    
-	public void addUser(WebUser b) {
-		b.getPositionCollection().add(this);
-		this.getWebuserCollection().add(b);
 
-	}
+    public void setPostedBy(String postedBy) {
+        this.postedBy = postedBy;
+    }
 
     @Override
     public int hashCode() {
@@ -192,10 +188,9 @@ public class Position implements Serializable {
         return true;
     }
 
-
     @Override
     public String toString() {
-        return "com.example.domain.Position[ id=" + id + " ]";
+        return "com.example.domain.Position[ id=" + id + ",Description="+description +" ]";
     }
     
 }
