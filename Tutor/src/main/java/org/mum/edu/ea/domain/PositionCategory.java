@@ -16,11 +16,9 @@ public class PositionCategory implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long pcategoryId;	
 
-	@Column(name="TYPE", length=15, unique=true, nullable=false)
+	@Column(name="TYPE", length=15, nullable=false)
 	@Enumerated(EnumType.STRING)
 	private Category type ;
-    
-	
 
 	public Long getPcategoryId() {
 		return pcategoryId;

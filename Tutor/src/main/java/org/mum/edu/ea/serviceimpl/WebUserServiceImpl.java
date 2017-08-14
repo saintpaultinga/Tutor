@@ -1,11 +1,15 @@
+
 package org.mum.edu.ea.serviceimpl;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.mum.edu.ea.domain.WebUser;
 import org.mum.edu.ea.domain.WebUserProfile;
 import org.mum.edu.ea.domain.WebUserProfileType;
+import org.mum.edu.ea.domain.WebuserUserprofilePK;
+import org.mum.edu.ea.repository.WebUserProfileRepository;
 import org.mum.edu.ea.repository.WebUserProfileRepository;
 import org.mum.edu.ea.repository.WebUserRepository;
 import org.mum.edu.ea.service.WebUserService;
@@ -37,16 +41,17 @@ public class WebUserServiceImpl implements WebUserService {
 		return user;
 	}
 
-	/**
-	 * @param id
-	 */
 
-	@Override
-	public WebUser findById(Long id) {
-		WebUser user = userRepository.findOne(id);
+    /**
+     * @param id
+     */
 
-		return user;
-	}
+    @Override
+    public WebUser findById(Long id) {
+        WebUser user = userRepository.findOne(id);
+        return user;
+    }
+
 
 	@Transactional
 	@Override
@@ -56,13 +61,13 @@ public class WebUserServiceImpl implements WebUserService {
 		if (localUser != null) {
 			LOG.info("user {} already exists. Nothing will be done.", user.getEmail());
 		} else {
-			
+
 			user.getWebUserProfileCollection().addAll(userRoles);
 
-			localUser = userRepository.save(user);
-		}
-		return localUser;
-	}
+            localUser = userRepository.save(user);
+        }
+        return localUser;
+    }
 
     @Override
     public void save(WebUser user) {
@@ -79,24 +84,21 @@ public class WebUserServiceImpl implements WebUserService {
     	System.out.println("------webuser---end");
     }
 
+    @Override
+    public void deleteUserById(Long Id) {
 
-	@Override
-	public void deleteUserById(Long Id) {
 
-		userRepository.delete(Id);
-		
-	}
+        userRepository.delete(Id);
+    }
 
-	@Override
-	public List<WebUser> findAll() {
-		// TODO Auto-generated method stub
-		return userRepository.findAll();
-	}
+    @Override
+    public List<WebUser> findAll() {
+        return null;
+    }
 
-	@Override
+    @Override
 	public WebUser findByUsername(String username) {
 		// TODO Auto-generated method stub
 		return userRepository.findByUsername(username);
 	}
-
 }

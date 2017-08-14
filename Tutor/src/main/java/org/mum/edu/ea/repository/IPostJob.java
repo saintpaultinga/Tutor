@@ -1,9 +1,15 @@
 package org.mum.edu.ea.repository;
 
+import javafx.geometry.Pos;
 import org.mum.edu.ea.domain.Position;
+import org.mum.edu.ea.domain.PositionStatus;
+import org.mum.edu.ea.utils.DateUtils;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -11,4 +17,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface IPostJob extends JpaRepository<Position,Long> {
+    List<Position> findAllByStatusEquals(PositionStatus status);
+    List<Position> findAllByDeadlineAfterAndStatus(Date date,PositionStatus status);
+
 }
