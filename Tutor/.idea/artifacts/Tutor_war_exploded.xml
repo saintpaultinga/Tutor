@@ -61,8 +61,6 @@
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:8.5.16" />
           <element id="library" level="project" name="Maven: org.eclipse.jdt:ecj:3.12.3" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.43" />
-          <element id="library" level="project" name="Maven: org.jadira.usertype:usertype.extended:unknown" />
-          <element id="library" level="project" name="Maven: org.hsqldb:hsqldb:2.3.5" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-test:1.5.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-test:1.5.6.RELEASE" />
