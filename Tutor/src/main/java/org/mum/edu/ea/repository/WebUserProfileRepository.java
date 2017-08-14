@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface WebUserProfileRepository extends JpaRepository<WebUserProfile, Long> {
      
-	 List<WebUserProfile> findByRole(WebUserProfileType role);
+	 WebUserProfile findByRole(WebUserProfileType role);
 }
