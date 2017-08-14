@@ -11,11 +11,13 @@ public interface WebUserService {
 	
 	WebUser findByEmail (String email);
 	
+	WebUser findByUsername(String username);
+	
 	WebUser findById(Long id);
 	
 	WebUser createUser(WebUser user, Set<WebUserProfile> userRoles) throws Exception;
 	
-	WebUser save(WebUser user);
+	void save(WebUser user);
 	
 	void deleteUserById(Long Id);
 	

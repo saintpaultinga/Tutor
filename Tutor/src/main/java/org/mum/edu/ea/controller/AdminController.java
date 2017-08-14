@@ -1,6 +1,6 @@
 package org.mum.edu.ea.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 
 import java.util.List;
 
@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping("/admin")
 public class AdminController {
     @Autowired
 	WebUserServiceImpl userservice;
 	
 	@RequestMapping("/login")
 	public String admin(Model model){
-		return "admin/login";
+		
+		return "/login";
 	}
 	
 	@RequestMapping("/dashboard")
