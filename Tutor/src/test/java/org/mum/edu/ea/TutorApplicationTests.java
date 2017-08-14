@@ -92,12 +92,12 @@ public class TutorApplicationTests {
 	public void testInsertUser() {
 		
 		WebUser user = new WebUser();
-		user.setEmail("test@gmail.com");
-		user.setFirstname("tset1");
-		user.setLastname("TestFisrt");
+		user.setEmail("kuthu.eshan@gmail.com");
+		user.setFirstname("bikesh");
+		user.setLastname("kuthu");
 		user.setEnabled(true);
 		user.setPhone("64123301255");
-		user.setPassword("test1");
+		user.setPassword("hello");
 		user.setTitle("Java Developer");
 		
 		wrepository.save(user);

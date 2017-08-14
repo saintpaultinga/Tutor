@@ -90,30 +90,31 @@
 					</header>
 				</div>
 				<div class="user-dashboard">
-					<h1>List of User Register</h1>
+					<h1>List of Position Offer</h1>
 
 
 					<table class="table kullaniciTablosu">
 						<thead>
 							<tr>
-								<th>User ID</th>
-								<th>User Profile</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Phone Number</th>
+								<th> ID</th>
+								<th>Description</th>
+								<th>Duration</th>
+								<th>Wage</th>
+								<th>Status</th>
+								<th>Title</th>
+								
 							</tr>
 						</thead>
 
 						<tbody>
 
-							<c:forEach var="user" items="${user}">
-								<tr><td>${user.id}</td>
-									<td><span> <img width="40" class="img-circle"
-											alt="User Avatar" src="https://t.hizliresim.com/3vp0pp-s.jpg">
-									</span></td>
-									<td>${user.firstname}</td>
-									<td>${user.lastname}</td>
-									<td>${user.phone}</td>
+							<c:forEach var="joboffer" items="${joboffer}">
+								<tr><td>${joboffer.id}</td>
+									<td>${joboffer.description}</td>
+									<td>${joboffer.duration}</td>
+									<td>${joboffer.estimatedwage}</td>
+									<td>${joboffer.status}</td>
+									<td>${joboffer.title}</td>
 									<td>
 										<form action="delete?userId=${user.id}" method="post">
 											<button type="submit">Delete</button>
