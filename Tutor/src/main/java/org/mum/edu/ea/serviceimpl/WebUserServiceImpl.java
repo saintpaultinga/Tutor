@@ -76,6 +76,7 @@ public class WebUserServiceImpl implements WebUserService {
 		}
     	System.out.println("------webuser---begin---"+wu.getRole());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setConfirmedpassword("");
         user.addProfile(wu);
         userRepository.save(user);
     }
