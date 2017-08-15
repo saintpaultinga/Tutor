@@ -5,10 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.mum.edu.ea.domain.WebUser;
-import org.mum.edu.ea.domain.WebUserProfile;
-import org.mum.edu.ea.domain.WebUserProfileType;
-import org.mum.edu.ea.domain.WebuserUserprofilePK;
+import org.mum.edu.ea.domain.*;
 import org.mum.edu.ea.repository.WebUserProfileRepository;
 import org.mum.edu.ea.repository.WebUserProfileRepository;
 import org.mum.edu.ea.repository.WebUserRepository;
@@ -95,9 +92,8 @@ public class WebUserServiceImpl implements WebUserService {
         return null;
     }
 
-    @Override
+	@Override
 	public WebUser findByUsername(String username) {
-		// TODO Auto-generated method stub
 		return userRepository.findByUsername(username);
 	}
 }
