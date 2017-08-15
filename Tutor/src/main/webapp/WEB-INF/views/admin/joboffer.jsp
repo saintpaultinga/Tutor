@@ -57,9 +57,17 @@
 									</button>
 								</div>
 							</nav>
-							<div class="search hidden-xs hidden-sm">
-								<input type="text" placeholder="Search" id="search">
-							</div>
+							<%--<div class="search hidden-xs hidden-sm">--%>
+								<%--<input type="text" placeholder="Search" id="search">--%>
+							<%--</div>--%>
+							<div class="col-lg-6">
+								<div class="input-group">
+									<form action=""
+									<input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+									<span class="input-group-btn">
+        <button class="btn btn-secondary" type="button">Go!</button>
+      </span>
+								</div>
 						</div>
 						<div class="col-md-5">
 							<div class="header-rightside">
