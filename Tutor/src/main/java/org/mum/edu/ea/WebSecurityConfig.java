@@ -70,8 +70,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.
 			authorizeRequests()
 				.antMatchers("/").permitAll()
-				.antMatchers("/login","/welcome","/registration","/jobPost/**","/job/**/**").permitAll()
-//				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest().authenticated()
+				.antMatchers("/login","/welcome","/registration").permitAll()
+				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest().authenticated()
 				.antMatchers("/user/**").hasAuthority("USER").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")
