@@ -28,7 +28,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1502830692680" expanded="true" signature="2921:2931" ph="..." />
+                <marker date="1502830692680" expanded="true" signature="2921:2957" ph="..." />
+                <marker date="1502830692680" expanded="true" signature="2921:3419" ph="..." />
+                <marker date="1502830692680" expanded="true" signature="3028:3181" ph="..." />
+                <marker date="1502830692680" expanded="true" signature="3054:3147" ph="..." />
+                <marker date="1502830692680" expanded="true" signature="3096:3138" ph="..." />
+                <marker date="1502830692680" expanded="false" signature="3107:3113" ph="©" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -36,9 +44,11 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="59" column="9" lean-forward="false" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
-              <folding />
+            <state relative-caret-position="1775">
+              <caret line="71" column="9" lean-forward="false" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+              <folding>
+                <marker date="1502830692680" expanded="true" signature="3933:3959" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,20 +57,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/controller/PostJobController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="25">
-              <caret line="48" column="61" lean-forward="false" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
+              <caret line="46" column="61" lean-forward="false" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <marker date="1502830692680" expanded="true" signature="1438:1734" ph="{...}" />
+                <marker date="1502830692680" expanded="true" signature="1851:2059" ph="{...}" />
+                <marker date="1502830692680" expanded="true" signature="2174:2344" ph="{...}" />
+                <marker date="1502830692680" expanded="true" signature="2502:2756" ph="{...}" />
+                <marker date="1502830692680" expanded="true" signature="2917:3213" ph="{...}" />
+                <marker date="1502830692680" expanded="true" signature="3387:3772" ph="{...}" />
+                <marker date="1502830692680" expanded="true" signature="3935:4032" ph="{...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApplyJobController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/controller/ApplyJobController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="35" column="66" lean-forward="false" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -95,11 +102,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="74" column="25" lean-forward="false" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+            <state relative-caret-position="590">
+              <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="309">
+              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -165,6 +184,7 @@
         <option value="$PROJECT_DIR$/src/main/java/org/mum/edu/ea/domain/Position.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/mum/edu/ea/repository/IPostJob.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/mum/edu/ea/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -983,12 +1003,12 @@
       <workItem from="1502753976519" duration="13719000" />
       <workItem from="1502771841097" duration="7677000" />
       <workItem from="1502808171660" duration="9244000" />
-      <workItem from="1502829561769" duration="960000" />
+      <workItem from="1502829561769" duration="1192000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32809000" />
+    <option name="totallyTimeSpent" value="33041000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1060,6 +1080,13 @@
           <caret line="43" column="23" lean-forward="true" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1502830692680" expanded="true" signature="1438:1734" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="1851:2059" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="2174:2344" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="2502:2756" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="2917:3213" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="3387:3772" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="3935:4032" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1082,14 +1109,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1414,9 +1436,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="59" column="9" lean-forward="false" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
-          <folding />
+        <state relative-caret-position="1775">
+          <caret line="71" column="9" lean-forward="false" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+          <folding>
+            <marker date="1502830692680" expanded="true" signature="3933:3959" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1455,9 +1479,16 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/controller/PostJobController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
-          <caret line="48" column="61" lean-forward="false" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
+          <caret line="46" column="61" lean-forward="false" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1502830692680" expanded="true" signature="1438:1734" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="1851:2059" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="2174:2344" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="2502:2756" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="2917:3213" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="3387:3772" ph="{...}" />
+            <marker date="1502830692680" expanded="true" signature="3935:4032" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1474,14 +1505,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502830692680" expanded="true" signature="2921:2931" ph="..." />
+            <marker date="1502830692680" expanded="true" signature="2921:2957" ph="..." />
+            <marker date="1502830692680" expanded="true" signature="2921:3419" ph="..." />
+            <marker date="1502830692680" expanded="true" signature="3028:3181" ph="..." />
+            <marker date="1502830692680" expanded="true" signature="3054:3147" ph="..." />
+            <marker date="1502830692680" expanded="true" signature="3096:3138" ph="..." />
+            <marker date="1502830692680" expanded="false" signature="3107:3113" ph="©" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/mum/edu/ea/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="74" column="25" lean-forward="false" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+        <state relative-caret-position="590">
+          <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding />
         </state>
       </provider>
