@@ -29,7 +29,6 @@ import java.util.Set;
  */
 @Controller
 @RequestMapping("/jobPost")
-
 public class PostJobController {
     @Autowired
     IPostJobService jobService;
@@ -37,7 +36,6 @@ public class PostJobController {
     WebUserServiceImpl webUserService;
     @Autowired
     PositionCategoryImpl positionCategoryService;
-
 
     @RequestMapping(value = "/addPosition", method = RequestMethod.POST)
     public String postJob(Position position, Principal principal, Model model) {
