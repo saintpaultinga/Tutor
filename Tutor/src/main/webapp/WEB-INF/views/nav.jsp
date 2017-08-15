@@ -13,11 +13,11 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="#">Tutor Search</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right ">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item ">
+                <a class="nav-link" href="/admin/home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/jobPost/addPosition">Post Job</a>
+                <a class="nav-link active" href="/jobPost/addPosition">Post Job</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/jobPost/getAllPosition">View Posted Job</a>

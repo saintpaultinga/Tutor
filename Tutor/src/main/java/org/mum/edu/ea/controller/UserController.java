@@ -1,10 +1,16 @@
 package org.mum.edu.ea.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.websocket.server.PathParam;
 
 import org.mum.edu.ea.auth.UserValidator;
 import org.mum.edu.ea.domain.WebUser;
-import org.mum.edu.ea.serviceimpl.SecurityServiceImpl;
+import org.mum.edu.ea.domain.WebUserProfile;
+import org.mum.edu.ea.domain.WebUserProfileType;
+import org.mum.edu.ea.repository.IPostJob;
+import org.mum.edu.ea.service.PostJobService;
 import org.mum.edu.ea.serviceimpl.WebUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -23,21 +29,27 @@ public class UserController {
    @Autowired	
    private UserValidator userValidator;
    @Autowired
-   WebUserServiceImpl userService;
+   private WebUserServiceImpl userService;
    @Autowired
-   private SecurityServiceImpl securityService;
+   private PostJobService jobService;
+   
+	
+	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
+	public ModelAndView login(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("login");
+		return modelAndView;
+	}
    
 	// defaul page (just for testing)
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String welcome(Model model) {
+	@RequestMapping(value = {"/welcome","/"}, method = RequestMethod.GET)
+	public String welcomem(Model model) {
+		model.addAttribute("positionList", jobService.getAllPositions());
+		System.out.println("---------Here is the result--------------"+jobService.getAllPosition().size());
 		return "home";
 	}
-	// defaul page (just for testing)
-	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public String welcomem(Model model) {
-		
-		return "welcome";
-	}
+
+	
 	// defaul page (just for testing)
 		@RequestMapping(value = "/registration", method = RequestMethod.GET)
 		public String registrationForm(Model model) {
@@ -60,15 +72,16 @@ public class UserController {
         }
 
         userService.save(userForm);
-
-        securityService.autologin(userForm.getUsername(), userForm.getConfirmedpassword());
-
         return "redirect:/";
     }
-	public String findAllUser(Model model) {
-
-		return "/userlist";
-	}
+//    @RequestMapping(value={"/displayUser"}, method = RequestMethod.GET)
+//	public String findAllUser(Model model) {
+//		
+//		List<WebUser> listUser = userService.findAll();
+//		model.addAttribute("user", listUser);
+//
+//		return "/userlist";
+//	}
 
 	@RequestMapping("/UserDetail")
 	public String UserDetail(@PathParam("id") Long id, Model model) {
@@ -76,13 +89,26 @@ public class UserController {
 		return "userDetail";
 	}
 	
-	@RequestMapping(value="/user/home", method = RequestMethod.GET)
+	@RequestMapping(value="/admin/home", method = RequestMethod.GET)
 	public ModelAndView home(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		WebUser user = userService.findByEmail(auth.getName());
 		modelAndView.addObject("userName", user.getUsername());
-		modelAndView.setViewName("user/home");
+		System.out.println("-----------we are here------------------"+user.getUsername());
+		List<String> roles = new ArrayList<>();
+		for(WebUserProfile w:user.getWebUserProfileCollection()) {
+			roles.add(w.getRole());
+		}
+		if(roles.contains(WebUserProfileType.ADMIN.name())) {
+			System.out.println("-----------we are here------------------"+user.getUsername());
+			modelAndView.setViewName("admin/home");
+		}else {
+			System.out.println("-----------we are here------------------"+user.getUsername());
+			modelAndView.setViewName("user/home");
+		}
+		
+		
 		return modelAndView;
 	}
 	

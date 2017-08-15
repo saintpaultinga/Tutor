@@ -73,5 +73,4 @@ public class PostJobService implements IPostJobService {
         return list;
     }
 
-
 }

@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <html lang="en">
 <head>
 
@@ -36,13 +38,14 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>-->
 		<div class="col-lg-6" style="margin-left: 25px;">
-		
+		 <form:form method="POST" modelAttribute="">
 			<div class="input-group">
 				<input type="text" class="form-control" placeholder="Search by title...">
 				<span class="input-group-btn">
 					<button class="btn btn-secondary" type="button">Go!</button>
 				</span>
 			</div>
+		</form:form>
 		</div>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 
@@ -62,37 +65,8 @@
 
 	<!-- Page Content -->
 	<div class="container">
-
-		<!-- Jumbotron Header -->
-		<header class="jumbotron my-4">
-			<h1 class="display-3">CsTech</h1>
-			<p class="lead">Find your A+ Tutor</p>
-			<a href="#" class="btn btn-primary btn-lg">Call to action!</a>
-		</header>
-
-		<!-- Page Features -->
-		<div class="row text-center">
-			<c:forEach var="position" items="${positionList}">
-				<div class="col-lg-3 col-md-6 mb-4">
-					<div class="card">
-						<img class="card-img-top" src="http://placehold.it/500x325" alt="">
-						<div class="card-body">
-							<h4 class="card-title">${position.title}</h4>
-							<p class="card-text">${position.description}</p>
-						</div>
-						<div class="card-footer">
-							<a href="#" class="btn btn-primary">Find Out More!</a>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-
-		</div>
-		<!-- /.row -->
-
-	</div>
-	<!-- /.container -->
-
+	
+    </div>
 	<!-- Footer -->
 	<footer class="py-5 bg-dark">
 		<div class="container">
