@@ -13,7 +13,6 @@ public class TutorApplication extends SpringBootServletInitializer {
         return application.sources(TutorApplication.class);
     }
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(TutorApplication.class, args);
 	}

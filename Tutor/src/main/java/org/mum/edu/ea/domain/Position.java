@@ -7,6 +7,7 @@ package org.mum.edu.ea.domain;
 
 import org.springframework.data.geo.Point;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -79,6 +80,8 @@ public class Position implements Serializable {
 //    @ManyToOne (cascade = CascadeType.PERSIST)
 //    private Location locationId;
     private String jobLocation;
+
+    private String selectedUser;
 
     public Position() {
     }
@@ -186,6 +189,26 @@ public class Position implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public Set<WebUser> getWebuserCollection() {
+        return webuserCollection;
+    }
+
+    public void setWebuserCollection(Set<WebUser> webuserCollection) {
+        this.webuserCollection = webuserCollection;
+    }
+
+    public  void setWebUser(WebUser webUser){
+        this.webuserCollection.add(webUser);
+    }
+
+    public String getSelectedUser() {
+        return selectedUser;
+    }
+
+    public void setSelectedUser(String selectedUser) {
+        this.selectedUser = selectedUser;
     }
 
     @Override
