@@ -37,13 +37,10 @@ public class PostJobController {
     @Autowired
     PositionCategoryImpl positionCategoryService;
 
- //   WebUserProfileTypeRepository webUserProfileTypeRepository;
-
     @RequestMapping(value = "/addPosition", method = RequestMethod.POST)
     public String postJob(Position position, Principal principal, Model model) {
         //TODO get user
         position.setStatus(PositionStatus.ACTIVATE);
-        String email = "test@gmail.com";
         WebUser webUser = webUserService.findById(1l);
         position.setPostedBy(webUser.getEmail());
         jobService.createPosition(position);
@@ -60,13 +57,16 @@ public class PostJobController {
 
     @RequestMapping(value = "/getAllPosition", method = RequestMethod.GET)
     public String getAll(Model model) {
-        model.addAttribute("positionList", jobService.getAllPosition());
+        //TODO change userid
+        model.addAttribute("positionList", jobService.getAllPositionPosted("zamuna16@gmail.com"));
         return "postJob/postList";
     }
 
     @RequestMapping(value = "/getPosition/{id}", method = RequestMethod.GET)
-    public String getOne(@PathVariable Long id, Model model) {
+    public String getOne(@PathVariable Long id, Model model,Position position) {
         model.addAttribute("position", jobService.getPosition(id));
+        List<WebUser> userList=jobService.getAllUserApplied(jobService.getPosition(id));
+        model.addAttribute("appliedUsers",userList);
         return "postJob/postDetail";
     }
 

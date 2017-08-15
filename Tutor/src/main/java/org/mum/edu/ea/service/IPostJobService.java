@@ -1,7 +1,9 @@
 package org.mum.edu.ea.service;
 
 import org.mum.edu.ea.domain.Position;
+import org.mum.edu.ea.domain.PositionStatus;
 import org.mum.edu.ea.domain.WebUser;
+import sun.awt.windows.WEmbeddedFrame;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,5 +17,8 @@ public interface IPostJobService {
     public void deletePosition(Position position);
     public Position getPosition(Long id);
     public List<Position> getAllPosition();
+    public List<Position> getAllPositionPosted(String email);
+    public List<Position> getAllPositionApplied(WebUser id);
+    public List<WebUser> getAllUserApplied(Position position);
 
 }
