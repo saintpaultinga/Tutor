@@ -38,9 +38,9 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>-->
 		<div class="col-lg-6" style="margin-left: 25px;">
-		 <form:form method="POST" modelAttribute="">
+		 <form:form method="POST" action="/searchPosition">
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Search by title...">
+				<input type="text" name="keyword" class="form-control" placeholder="Search by title...">
 				<span class="input-group-btn">
 					<button class="btn btn-secondary" type="button">Go!</button>
 				</span>
