@@ -55,4 +55,11 @@ public class PostJobService implements IPostJobService {
         Date dateNow = DateUtils.returnCurrentDate();
         return postJobRepo.findAllByDeadlineAfterAndStatus(dateNow,PositionStatus.ACTIVATE);
     }
+    
+    @Transactional
+    public List<Position> getAllPositions() {
+
+       
+        return postJobRepo.findAll();
+    }
 }

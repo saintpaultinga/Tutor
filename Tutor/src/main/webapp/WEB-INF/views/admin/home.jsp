@@ -28,7 +28,7 @@
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<a class="navbar-brand" href="#">CsTech User</a>
+		<a class="navbar-brand" href="#">CsTech</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -39,9 +39,9 @@
 				<li class="nav-item active"><a class="nav-link" href="#">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">connected: ${userName}</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">JobApplied</a></li>
-				<li class="nav-item"><a class="nav-link" href="/jobPost/addPosition">PostJob</a></li>
+				<li class="nav-item"><a class="nav-link active" href="#">${userName}</a></li>
+				<li class="nav-item"><a class="nav-link active" href="#">connected</a></li>
+				<li class="nav-item"><a class="nav-link" href="/admincontrol/displayuser">User</a></li>
 				<li class="nav-item"><a class="nav-link" href="/logout">logout</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>

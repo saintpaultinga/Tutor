@@ -9,8 +9,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,8 +31,7 @@ public class WebUserProfile implements Serializable {
 	private Integer userProfileID;	
 
 	@Column(name="TYPE", length=15, unique=true, nullable=false)
-	@Enumerated(EnumType.STRING)
-	private WebUserProfileType role ;
+	private String role ;
 	
     public WebUserProfile() {
     }
@@ -48,11 +45,11 @@ public class WebUserProfile implements Serializable {
 		this.userProfileID = userProfileID;
 	}
 
-	public WebUserProfileType getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(WebUserProfileType role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

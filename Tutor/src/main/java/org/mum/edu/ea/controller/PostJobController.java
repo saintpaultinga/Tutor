@@ -6,7 +6,6 @@ import com.sun.xml.internal.bind.v2.runtime.*;
 import com.sun.xml.internal.bind.v2.runtime.Location;
 import org.mum.edu.ea.domain.*;
 //import org.mum.edu.ea.domain.Location;
-import org.mum.edu.ea.repository.WebUserProfileTypeRepository;
 import org.mum.edu.ea.service.IPostJobService;
 import org.mum.edu.ea.service.PositionCategoryService;
 import org.mum.edu.ea.serviceimpl.PositionCategoryImpl;
@@ -30,7 +29,6 @@ import java.util.Set;
  */
 @Controller
 @RequestMapping("/jobPost")
-
 public class PostJobController {
     @Autowired
     IPostJobService jobService;
@@ -39,7 +37,7 @@ public class PostJobController {
     @Autowired
     PositionCategoryImpl positionCategoryService;
 
-    WebUserProfileTypeRepository webUserProfileTypeRepository;
+ //   WebUserProfileTypeRepository webUserProfileTypeRepository;
 
     @RequestMapping(value = "/addPosition", method = RequestMethod.POST)
     public String postJob(Position position, Principal principal, Model model) {

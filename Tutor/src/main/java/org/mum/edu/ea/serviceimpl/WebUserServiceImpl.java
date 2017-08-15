@@ -72,28 +72,22 @@ public class WebUserServiceImpl implements WebUserService {
     @Override
     public void save(WebUser user) {
     	System.out.println("------webuser---begin");
-    	WebUserProfile wu = wurepository.findByRole(WebUserProfileType.ADMIN);
-    	if(wu == null) {
-    		wu = new WebUserProfile();
-    		wu.setRole(WebUserProfileType.ADMIN);
-    	}
-    	System.out.println("------webuser---middle");
+    	WebUserProfile wu = wurepository.findByRole(WebUserProfileType.USER.name());
+    	System.out.println("------webuser---begin---"+wu.getRole());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.addProfile(wu);
         userRepository.save(user);
-    	System.out.println("------webuser---end");
     }
 
     @Override
     public void deleteUserById(Long Id) {
-
 
         userRepository.delete(Id);
     }
 
     @Override
     public List<WebUser> findAll() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
