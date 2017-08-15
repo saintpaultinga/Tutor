@@ -44,7 +44,7 @@ public class UserController {
 	// defaul page (just for testing)
 	@RequestMapping(value = {"/welcome","/"}, method = RequestMethod.GET)
 	public String welcomem(Model model) {
-		model.addAttribute("positionList", jobService.getAllPositions());
+		model.addAttribute("positionList", jobService.getAllPosition());
 		System.out.println("---------Here is the result--------------"+jobService.getAllPosition().size());
 		return "home";
 	}

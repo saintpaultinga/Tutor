@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
+@RequestMapping("/admincontrol")
 public class AdminController {
     @Autowired
 	WebUserServiceImpl userservice;
