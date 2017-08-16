@@ -44,7 +44,7 @@ public class UserController {
 	// defaul page (just for testing)
 	@RequestMapping(value = {"/welcome","/"}, method = RequestMethod.GET)
 	public String welcomem(Model model) {
-		model.addAttribute("positionList", jobService.getAllPosition());
+		model.addAttribute("positionList", jobService.getAllPositions());
 		System.out.println("---------Here is the result--------------"+jobService.getAllPosition().size());
 		return "home";
 	}
@@ -102,9 +102,11 @@ public class UserController {
 		}
 		if(roles.contains(WebUserProfileType.ADMIN.name())) {
 			System.out.println("-----------we are here------------------"+user.getUsername());
+			modelAndView.addObject("positionList",jobService.getAllPositions());
 			modelAndView.setViewName("admin/home");
 		}else {
-			System.out.println("-----------we are here------------------"+user.getUsername());
+			System.out.println("-----------we are here------------------"+user.getUsername()+"User");
+			modelAndView.addObject("positionList",jobService.getAllPositions());
 			modelAndView.setViewName("user/home");
 		}
 		

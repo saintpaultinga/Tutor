@@ -29,12 +29,11 @@ public class ApplyJobController {
     @Autowired
     WebUserService webUserService;
 @PostMapping("/apply/{jobId}")
-public String applyJob(@PathVariable Long jobId, Principal principal, Model model, BindingResult bindingResult){
+public String applyJob(@PathVariable Long jobId, Principal principal, Model model){
     System.out.println("Apply Job---->"+jobId);
     Position applyPosition=postJobService.getPosition(jobId);
     //TODO change user
-    WebUser user=webUserService.findByEmail("zamuna16@gmail.com");
-//    WebUser user=webUserService.findByEmail("zam@mum.edu");
+    WebUser user=webUserService.findByEmail(principal.getName());
     applyPosition.setWebUser(user);
     postJobService.updatePosition(applyPosition);
     return "redirect:../apply";
@@ -42,10 +41,9 @@ public String applyJob(@PathVariable Long jobId, Principal principal, Model mode
 
 @GetMapping("/apply")
     public String appliedJob(Principal principal, Model model){
-//    String email=principal.getName();
     //TODO convert to email
-
-    model.addAttribute("positionList",postJobService.getAllPositionApplied(webUserService.findById(1L)));
+    model.addAttribute("uemail",principal.getName());
+    model.addAttribute("positionList",postJobService.getAllPositionApplied(webUserService.findByEmail(principal.getName())));
     return "applyJob/appliedJobs";
 }
 
