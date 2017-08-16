@@ -17,7 +17,8 @@
                     <h6 class="card-subtitle mb-1 float-sm-right">${position.deadline}</h6>
                     <p class="card-text">${position.description}</p>
                     <p class="card-text">Duration: ${position.duration} months</p>
-                    <p class="card-text">Category: ${position.category}</p>
+                    <p class="card-text">Category: ${(position.category)?position.category:'Not Specified'}</p>
+                    <p class="card-text">PostedBy: ${position.postedBy}</p>
 
                     <address>
                         <h6 class="card-subtitle mb-2 text-muted">Location:</h6>
@@ -26,7 +27,7 @@
 
                     <p class="card-text">Estimated Wage :$ ${position.estimatedwage}</p>
                     <%--TODO selectedUSer--%>
-                    <c:if test="${position.selectedUser }=='zam@mum.edu'">
+                    <c:if test="${position.selectedUser == uemail}">
                         <p class="alert alert-success">You are selected for this job</p>
                     </c:if>
                     <%--<a href="../jobPost/getPosition/${position.id}" class="btn btn-primary btn-sm">View Detail</a>--%>

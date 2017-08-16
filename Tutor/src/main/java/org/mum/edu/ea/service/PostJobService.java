@@ -1,6 +1,8 @@
 package org.mum.edu.ea.service;
 
-import org.mum.edu.ea.domain.*;
+import org.mum.edu.ea.domain.Position;
+import org.mum.edu.ea.domain.PositionStatus;
+import org.mum.edu.ea.domain.WebUser;
 import org.mum.edu.ea.repository.IPostJob;
 import org.mum.edu.ea.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +55,11 @@ public class PostJobService implements IPostJobService {
         Date dateNow = DateUtils.returnCurrentDate();
         return postJobRepo.findAllByDeadlineAfterAndStatus(dateNow,PositionStatus.ACTIVATE);
     }
+ 
+    @Transactional
+    public List<Position> getAllPositions() {
+        return postJobRepo.findAll();
+    }
 
     @Override
     public List<Position> getAllPositionPosted(String email) {
@@ -62,7 +69,7 @@ public class PostJobService implements IPostJobService {
 
     @Override
     public List<Position> getAllPositionApplied(WebUser id) {
-        return postJobRepo.findPositionsByWebuserCollectionIsContainingAndStatus(id,PositionStatus.ACTIVATE);
+        return postJobRepo.findPositionsByWebuserCollectionIsContainingAndStatus(id, PositionStatus.ACTIVATE);
     }
 
     @Override

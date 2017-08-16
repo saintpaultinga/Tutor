@@ -17,6 +17,7 @@
             <p class="card-text">Estimated Wage: $ ${position.estimatedwage}</p>
             <p class="card-text">Duration: ${position.duration} months</p>
             <p class="card-text">Category: ${position.category}</p>
+            <p class="card-text">Posted By: ${position.postedBy}</p>
 
 
             <address>
@@ -31,9 +32,6 @@
                     </button>
             </form>
             <%--TODO form --%>
-            <form:form action="../../job/apply/${position.id}" method="post" >
-                <button class="btn btn-info btn-small float-right" value="Apply" type="submit">Apply</button>
-            </form:form>
 
         </div>
     </div>

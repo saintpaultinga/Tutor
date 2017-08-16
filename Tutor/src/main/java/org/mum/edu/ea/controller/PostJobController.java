@@ -41,8 +41,7 @@ public class PostJobController {
     public String postJob(Position position, Principal principal, Model model) {
         //TODO get user
         position.setStatus(PositionStatus.ACTIVATE);
-        WebUser webUser = webUserService.findById(1l);
-        position.setPostedBy(webUser.getEmail());
+        position.setPostedBy(principal.getName());
         jobService.createPosition(position);
         return "redirect:../getPosition/" + position.getId();
     }
@@ -56,9 +55,9 @@ public class PostJobController {
     }
 
     @RequestMapping(value = "/getAllPosition", method = RequestMethod.GET)
-    public String getAll(Model model) {
+    public String getAll(Model model,Principal principal) {
         //TODO change userid
-        model.addAttribute("positionList", jobService.getAllPositionPosted("zamuna16@gmail.com"));
+        model.addAttribute("positionList", jobService.getAllPositionPosted(principal.getName()));
         return "postJob/postList";
     }
 
@@ -71,10 +70,9 @@ public class PostJobController {
     }
 
     @RequestMapping(value = "/addPosition/{id}", method = RequestMethod.POST)
-    public String updatePosition(Position position, @PathVariable("id") Long id) {
+    public String updatePosition(Position position, @PathVariable("id") Long id,Principal principal) {
         //TODO get user
-        WebUser webUser = webUserService.findById(1l);
-        position.setPostedBy(webUser.getEmail());
+        position.setPostedBy(principal.getName());
         position.setStatus(PositionStatus.ACTIVATE);
         jobService.updatePosition(position);
         return "redirect:../getPosition/" + position.getId();
