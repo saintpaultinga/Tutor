@@ -74,14 +74,6 @@ public class UserController {
         userService.save(userForm);
         return "redirect:/";
     }
-//    @RequestMapping(value={"/displayUser"}, method = RequestMethod.GET)
-//	public String findAllUser(Model model) {
-//		
-//		List<WebUser> listUser = userService.findAll();
-//		model.addAttribute("user", listUser);
-//
-//		return "/userlist";
-//	}
 
 	@RequestMapping("/UserDetail")
 	public String UserDetail(@PathParam("id") Long id, Model model) {

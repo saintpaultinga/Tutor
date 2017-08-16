@@ -1,6 +1,5 @@
 <%@include file="../header.jsp"%>
 <%@include file="../nav.jsp"%>
-
 	<!-- Page Content -->
 	<div class="container">
 

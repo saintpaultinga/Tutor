@@ -35,6 +35,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+
 /**
  *
  * @author TSPDEV
@@ -89,12 +90,12 @@ public class WebUser implements Serializable {
     @Lob
     @Column(name = "PICTURE")
     private byte[] picture;
-    @ManyToMany(mappedBy = "webuserCollection",cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "webuserCollection")
     private Set<Position> positionCollection = new HashSet<>();
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ID")
     @ManyToOne
     private Address addressId;
-    @OneToMany(mappedBy = "webuserId")
+    @OneToMany(mappedBy = "webuserId",cascade = CascadeType.ALL)
     private Collection<Message> messageCollection;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -240,6 +241,12 @@ public class WebUser implements Serializable {
     public void addProfile(WebUserProfile p) {
 	    
     	this.WebUserProfileCollection.add(p);
+
+	}
+    
+    public void addPosition(Position p){
+	    
+    	this.positionCollection.add(p);
 
 	}
 

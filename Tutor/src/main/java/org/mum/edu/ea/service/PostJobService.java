@@ -60,6 +60,15 @@ public class PostJobService implements IPostJobService {
     public List<Position> getAllPositions() {
         return postJobRepo.findAll();
     }
+    
+    
+    @Transactional
+    public List<Position> getAllMatchsPosition(String keyword) {
+    	
+        return postJobRepo.findByTitleContaining(keyword);
+    }
+    
+    
 
     @Override
     public List<Position> getAllPositionPosted(String email) {

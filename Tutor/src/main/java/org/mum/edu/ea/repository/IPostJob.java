@@ -24,4 +24,5 @@ public interface IPostJob extends JpaRepository<Position,Long> {
     List<Position> findPositionsByWebuserCollectionIsContainingAndStatus(WebUser id, PositionStatus status);
     List<Position> findDistinctByCategoryContains(String category);
     List<Position> findAllByJobLocationContainingAndStatusEqualsAndDeadlineGreaterThanEqual(String joblocation,String cat,Date date);
+    List<Position> findByTitleContaining (String keyword);
 }
