@@ -10,18 +10,35 @@
             aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="#">Tutor Search</a>
+        <div class="col-lg-6" style="margin-left: 25px;">
+
+            <div class="input-group">
+                <input type="text" class="form-control col-md-4" placeholder="Search by title...">
+                <span class="input-group-btn">
+					<button class="btn btn-secondary" type="button">Go!</button>
+				</span>
+            </div>
+        </div>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right ">
             <li class="nav-item ">
                 <a class="nav-link" href="/admin/home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="/jobPost/addPosition">Post Job</a>
+                <a class="nav-link " href="/jobPost/addPosition">Post Job</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/jobPost/getAllPosition">View Posted Job</a>
+                <a class="nav-link" href="/jobPost/getAllPosition">Posted Job</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/job/apply">Applied Job</a>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="/admincontrol/displayuser">User</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#">${userName}</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a>
         </ul>
     </div>
 </nav>

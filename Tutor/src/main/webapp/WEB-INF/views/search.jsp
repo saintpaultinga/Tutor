@@ -47,6 +47,7 @@
 					</span>
 				</div>
 			</form:form>
+
 		</div>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 

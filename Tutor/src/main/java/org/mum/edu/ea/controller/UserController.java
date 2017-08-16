@@ -94,9 +94,11 @@ public class UserController {
 		}
 		if(roles.contains(WebUserProfileType.ADMIN.name())) {
 			System.out.println("-----------we are here------------------"+user.getUsername());
+			modelAndView.addObject("positionList",jobService.getAllPositions());
 			modelAndView.setViewName("admin/home");
 		}else {
-			System.out.println("-----------we are here------------------"+user.getUsername());
+			System.out.println("-----------we are here------------------"+user.getUsername()+"User");
+			modelAndView.addObject("positionList",jobService.getAllPositions());
 			modelAndView.setViewName("user/home");
 		}
 		

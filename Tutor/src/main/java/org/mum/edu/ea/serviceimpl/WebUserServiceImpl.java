@@ -72,7 +72,6 @@ public class WebUserServiceImpl implements WebUserService {
     	WebUserProfile wu = wurepository.findByRole(WebUserProfileType.USER.name());
     	System.out.println("------webuser---begin---"+wu.getRole());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setConfirmedpassword("");
         user.addProfile(wu);
         userRepository.save(user);
     }
