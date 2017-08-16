@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html lang="en">
 <head>
 
@@ -29,11 +30,22 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<a class="navbar-brand" href="#">CsTech</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
+		<!--<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive"
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
-		</button>
+		</button>-->
+		<div class="col-lg-6" style="margin-left: 25px;">
+			<form:form method="POST" action="/searchPosition">
+				<div class="input-group">
+					<input type="text" name="keyword" class="form-control"
+						placeholder="Search by title..."> <span
+						class="input-group-btn">
+						<button class="btn btn-secondary" type="button">Go!</button>
+					</span>
+				</div>
+			</form:form>
+		</div>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active"><a class="nav-link" href="#">Home

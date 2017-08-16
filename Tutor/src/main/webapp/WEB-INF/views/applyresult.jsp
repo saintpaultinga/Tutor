@@ -49,57 +49,27 @@
 			</form:form>
 		</div>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
-
 			<ul class="navbar-nav ml-auto">
-
 				<li class="nav-item active"><a class="nav-link" href="#">Home
 						<span class="sr-only">(current)</span>
 				</a></li>
-
-				<li class="nav-item"><a class="nav-link" href="/login">sign-in</a></li>
-				<li class="nav-item"><a class="nav-link" href="/registration">register</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="/jobPost/addPosition">Post a Position</a></li>
+				<li class="nav-item"><a class="nav-link active" href="#">connected:${userName}</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">JobApplied</a></li>
+				<li class="nav-item"><a class="nav-link" href="/jobPost/addPosition">PostJob</a></li>
+				<li class="nav-item"><a class="nav-link" href="/logout">logout</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
 
 	<!-- Page Content -->
 	<div class="container">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Title</th>
-					<th>Owner</th>
-					<th>description</th>
-					<th>Deadline</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-
-			<c:forEach var="position" items="${positionList}">
-				<tr>
-					<td>${position.title}</td>
-					<td>${position.postedBy}</td>
-					<td>${position.description}</td>
-					<td>${position.deadline}</td>
-					<td>  <form:form action="/job/apply/${position.id}/${keyword}" method="post" >
-                <button class="btn btn-info btn-small float-right" value="Apply" type="submit">Apply</button>
-            </form:form></td>
-					<!--<td><spring:url value="/users/${user.id}" var="userUrl" /> <spring:url
-							value="/users/${user.id}/delete" var="deleteUrl" /> <spring:url
-							value="/users/${user.id}/update" var="updateUrl" />
-
-						<button class="btn btn-info" onclick="location.href='${userUrl}'">Query</button>
-						<button class="btn btn-primary"
-							onclick="location.href='${updateUrl}'">Update</button>
-						<button class="btn btn-danger"
-							onclick="this.disabled=true;post('${deleteUrl}')">Delete</button>
-					</td>-->
-				</tr>
-			</c:forEach>
-		</table>
-
+	    <button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<h5>Thank you ${user.username} for applying to this job!</h5>
 	</div>
 
 	<!-- Bootstrap core JavaScript -->

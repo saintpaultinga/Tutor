@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html lang="en">
 <head>
 
@@ -36,13 +37,14 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>-->
 		<div class="col-lg-6" style="margin-left: 25px;">
-		
+		  <form class="navbar-form" action="/searchPosition" method="POST">
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Search by title...">
+				<input type="text" name='keyword' class="form-control" placeholder="Search by title...">
 				<span class="input-group-btn">
-					<button class="btn btn-secondary" type="button">Go!</button>
+					<button class="btn btn-secondary" type="submit">Go!</button>
 				</span>
 			</div>
+		</form>	
 		</div>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 
