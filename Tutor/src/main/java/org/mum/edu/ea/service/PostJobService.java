@@ -58,7 +58,6 @@ public class PostJobService implements IPostJobService {
  
     @Transactional
     public List<Position> getAllPositions() {
-    	
         return postJobRepo.findAll();
     }
 
